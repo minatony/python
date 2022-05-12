@@ -39,3 +39,46 @@ if abs(x - o) < 2:
         print("Impossible")
 else:
     print("Impossible")
+"""
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\part 2
+
+"""
+enter_cells = list(input("Enter cells: "))
+print("---------")
+print('|', enter_cells[0], enter_cells[1], enter_cells[2], '|')
+print('|', enter_cells[3], enter_cells[4], enter_cells[5], '|')
+print('|', enter_cells[6], enter_cells[7], enter_cells[8], '|')
+print("---------")
+num = "1 2 3 4 5 6 7 8 9 0".split()
+new_cellS = [[1, 1], [1, 2], [1, 3], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3]]
+b = True
+while b:
+    j = 0
+    a = 0
+    inp = input("Enter the coordinates: ").split()
+    for i in range(2):
+        if inp[i] in num:
+            if 0 < int(inp[i]) < 4:
+                a += 1
+            j += 1
+    if j == 1:
+        print("You should enter numbers!")
+        b = True
+    elif j == 2 and a == 1:
+        print("Coordinates should be from 1 to 3!")
+        b = True
+    elif j == 2 and a == 2:
+        for k in range(9):
+            if int(inp[0]) == new_cellS[k][0] and int(inp[1]) == new_cellS[k][1]:
+                if enter_cells[k] == "X" or enter_cells[k] == "O":
+                    print("This cell is occupied! Choose another one!")
+                    b = True
+                else:
+                    enter_cells[k] = "X"
+                    b = False
+print("---------")
+print('|', enter_cells[0], enter_cells[1], enter_cells[2], '|')
+print('|', enter_cells[3], enter_cells[4], enter_cells[5], '|')
+print('|', enter_cells[6], enter_cells[7], enter_cells[8], '|')
+print("---------")
